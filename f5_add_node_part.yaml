@@ -1,0 +1,36 @@
+---
+- name:  create  node
+  hosts: all
+  connection: local
+  vars:
+    f5_provider:
+      password: "networkjourney"
+      user: "admin"
+      server: "{{ ansible_host }}"
+      validate_certs: no
+      server_port: 443
+  tasks:
+  - name: CREATE NODES
+    bigip_node:
+      provider: "{{f5_provider}}"
+      partition: MGMT
+      host: "6.6.6.7"
+      name: "vcc-7.eu"
+  - name: CREATE NODES
+    bigip_node:
+      provider: "{{f5_provider}}"
+      partition: MGMT
+      host: 6.6.6.8
+      name: vcc-8.eu
+  - name: CREATE NODES
+    bigip_node:
+      provider: "{{f5_provider}}"
+      partition: MGMT
+      host: 6.6.6.9
+      name: vcc-9.eu
+  - name: CREATE NODES
+    bigip_node:
+      provider: "{{f5_provider}}"
+      partition: MGMT
+      host: 6.6.6.10
+      name: vcc-10.eu
