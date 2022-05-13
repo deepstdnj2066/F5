@@ -1,6 +1,6 @@
 ---
 - name:  create  node
-  hosts: F5LTM
+  hosts: all
   connection: local
   vars:
     f5_provider:
