@@ -1,0 +1,16 @@
+---
+- name:  create  node
+  hosts: F5LTM
+  connection: local
+  vars:
+    f5_provider:
+      password: "networkjourney"
+      user: "admin"
+      server: "{{ ansible_host }}"
+      validate_certs: no
+      server_port: 443
+  tasks:
+  - name: Create partition "MGMT" using the default route domain
+    bigip_partition:
+      name: MGMT
+      provider: "{{f5_provider}}"
